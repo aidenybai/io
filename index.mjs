@@ -5,7 +5,11 @@ import { Server } from 'socket.io';
 config();
 
 const httpServer = createServer();
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: '*',
+  },
+});
 
 io.on('connection', (socket) => {
   socket.on('respond', (data) => {
